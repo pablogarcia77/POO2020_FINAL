@@ -6,7 +6,16 @@
   <persistence-unit name="eventos" transaction-type="RESOURCE_LOCAL">  
 
     <!-- Clases entidades -->
+    <class>eventos.aplicacion.modelo.dominio.Catering</class>
     <class>eventos.aplicacion.modelo.dominio.Cliente</class>
+    <class>eventos.aplicacion.modelo.dominio.CouchingMozos</class>
+    <class>eventos.aplicacion.modelo.dominio.EntretenimientoNinios</class>
+    <class>eventos.aplicacion.modelo.dominio.EventosReservados</class>
+    <class>eventos.aplicacion.modelo.dominio.Musica</class>
+    <class>eventos.aplicacion.modelo.dominio.Ornamentacion</class>
+    <class>eventos.aplicacion.modelo.dominio.Reserva</class>
+    <class>eventos.aplicacion.modelo.dominio.Salon</class>
+    <class>eventos.aplicacion.modelo.dominio.Servicio</class>
     
     <!-- <provider>org.hibernate.ejb.HibernatePersistence</provider> -->
     <properties>

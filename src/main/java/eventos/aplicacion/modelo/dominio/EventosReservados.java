@@ -4,21 +4,28 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-@Entity
+@MappedSuperclass
 @Table(name = "EVENTOS_RESERVADOS")
 public class EventosReservados {
 
-    @Column
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     public List<Reserva> reservas = new ArrayList<Reserva> ();
-    @Column
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "res_id")
     Reserva reserva;
-    @Column
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "sal_id")
     Salon salon;
-    @Column
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "cli_id")
     Cliente cliente;
 
     public EventosReservados(Reserva reserva, Salon salon, Cliente cliente) {

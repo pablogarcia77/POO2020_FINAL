@@ -4,9 +4,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -14,21 +17,21 @@ import javax.persistence.Table;
 public class Reserva {
 
     @Id
-    @Column
+    @Column(name = "res_id")
     private String id_reserva;
-    @Column
+    @Column(name = "res_fecha")
     private Date fecha;
-    @Column
+    @Column(name = "res_monto")
     private double monto;
-    @Column
+    @Column(name = "res_cancelado")
     private boolean cancelado;
-    @Column
+    @Column(name = "res_saldo")
     private double saldo;
-    @Column
+    @Column(name = "res_reservado")
     private boolean reservado = false;
-    @Column
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     public List<Servicio> servicios = new ArrayList<Servicio> ();
-    @Column
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     public List<Salon> salon = new ArrayList<Salon> ();
 
     public Reserva(String id_reserva, Date fecha, double monto, boolean cancelado, double saldo, int hora_inicio,

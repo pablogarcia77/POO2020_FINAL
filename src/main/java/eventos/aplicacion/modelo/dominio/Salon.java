@@ -9,14 +9,14 @@ import javax.persistence.Table;
 @Table(name = "SALONES")
 public class Salon {
 
-    @Column
-    public String direccion;
-    @Column
-    public int capacidad;
     @Id
-    @Column
+    @Column(name = "sal_id")
     public String id_salon;
-    @Column
+    @Column(name = "sal_direccion")
+    public String direccion;
+    @Column(name = "sal_capacidad")
+    public int capacidad;
+    @Column(name = "sal_precio")
     public double precio;
 
     @Override

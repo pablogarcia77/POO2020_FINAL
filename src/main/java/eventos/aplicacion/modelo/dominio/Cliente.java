@@ -3,9 +3,12 @@ package eventos.aplicacion.modelo.dominio;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -13,15 +16,16 @@ import javax.persistence.Table;
 public class Cliente {
 
     @Id
-    @Column
+    @Column(name = "cli_id")
     private String id_cliente;
-    @Column
+    @Column(name = "cli_nombre")
     private String nombre;
-    @Column
+    @Column(name = "cli_telefono")
     private String telefono;
-    @Column
+    @Column(name = "cli_email")
     private String email;
-    @Column
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     public List<Reserva> reservas = new ArrayList<Reserva> ();
 
     public Cliente(String id_cliente, String nombre, String telefono, String email) {
