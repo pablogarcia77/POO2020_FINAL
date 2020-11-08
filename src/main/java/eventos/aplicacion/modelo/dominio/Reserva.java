@@ -4,25 +4,33 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "RESERVAS")
 public class Reserva {
 
+    @Id
+    @Column
     private String id_reserva;
-
+    @Column
     private Date fecha;
-
+    @Column
     private double monto;
-
+    @Column
     private boolean cancelado;
-
+    @Column
     private double saldo;
-
+    @Column
     private boolean reservado = false;
-
+    @Column
     public List<Servicio> servicios = new ArrayList<Servicio> ();
-
+    @Column
     public List<Salon> salon = new ArrayList<Salon> ();
-    
+
     public Reserva(String id_reserva, Date fecha, double monto, boolean cancelado, double saldo, int hora_inicio,
             int hora_fin, boolean reservado) {
     	super();

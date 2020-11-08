@@ -1,13 +1,22 @@
 package eventos.aplicacion.modelo.dominio;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "SALONES")
 public class Salon {
 
+    @Column
     public String direccion;
-
+    @Column
     public int capacidad;
-
+    @Id
+    @Column
     public String id_salon;
-
+    @Column
     public double precio;
 
     @Override

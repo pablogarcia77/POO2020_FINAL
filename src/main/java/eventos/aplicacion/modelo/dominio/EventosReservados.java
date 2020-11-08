@@ -4,12 +4,21 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "EVENTOS_RESERVADOS")
 public class EventosReservados {
 
+    @Column
     public List<Reserva> reservas = new ArrayList<Reserva> ();
-
+    @Column
     Reserva reserva;
+    @Column
     Salon salon;
+    @Column
     Cliente cliente;
 
     public EventosReservados(Reserva reserva, Salon salon, Cliente cliente) {

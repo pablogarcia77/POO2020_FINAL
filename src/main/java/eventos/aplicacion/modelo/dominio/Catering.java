@@ -1,8 +1,16 @@
 package eventos.aplicacion.modelo.dominio;
 
-public class Catering extends Servicio {
-    public int cantidadComidas;
+import javax.persistence.Column;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.Table;
 
+@MappedSuperclass
+@Table(name = "CATERINGS")
+public class Catering extends Servicio {
+
+    @Column
+    public int cantidadComidas;
+    @Column
     public double precioPorComida;
 
     public Catering(int cantidadComidas, double precioPorComida) {
