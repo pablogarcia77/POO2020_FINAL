@@ -27,6 +27,6 @@ public class ClienteDAOImpTest {
 
         clienteDAO.save(unCliente);
 
-        assertEquals(1, ((Cliente)manager.find(Cliente.class, 1)).getId_cliente());
+        assertEquals("1", ((Cliente)manager.find(Cliente.class, "1")).getId_cliente());
     }
 }
