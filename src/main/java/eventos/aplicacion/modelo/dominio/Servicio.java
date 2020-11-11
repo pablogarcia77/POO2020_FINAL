@@ -20,6 +20,15 @@ public abstract class Servicio {
   @Column
   public double precio;
 
+  public Servicio() {
+  }
+
+  public Servicio(String id_servicio, String descripcion, double precio) {
+    this.id_servicio = id_servicio;
+    this.descripcion = descripcion;
+    this.precio = precio;
+  }
+
   public abstract double calcularTotalServicio();
 
   public String getDescripcion() {
@@ -37,6 +46,13 @@ public abstract class Servicio {
   public void setPrecio(double precio) {
     this.precio = precio;
   }
-  
+
+  public String getId_servicio() {
+    return id_servicio;
+  }
+
+  public void setId_servicio(String id_servicio) {
+    this.id_servicio = id_servicio;
+  }
+
 }
-  
