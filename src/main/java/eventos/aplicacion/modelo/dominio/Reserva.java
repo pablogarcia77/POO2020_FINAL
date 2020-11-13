@@ -30,13 +30,12 @@ public class Reserva {
     @Column(name = "res_reservado")
     private boolean reservado = false;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    public List<Servicio> servicios = new ArrayList<Servicio> ();
+    public List<Servicio> servicios = new ArrayList<Servicio>();
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    public List<Salon> salon = new ArrayList<Salon> ();
+    public List<Salon> salon = new ArrayList<Salon>();
 
     public Reserva(String id_reserva, Date fecha, double monto, boolean cancelado, double saldo, int hora_inicio,
             int hora_fin, boolean reservado) {
-    	super();
         this.id_reserva = id_reserva;
         this.fecha = fecha;
         this.monto = monto;
@@ -48,7 +47,6 @@ public class Reserva {
     public Reserva() {
     }
 
-      
     public void reservarSalon(Salon s) {
         this.salon.add(s);
     }
@@ -56,15 +54,15 @@ public class Reserva {
     public double diferencia() {
         return saldo;
     }
-    
+
     public String mostrarServicios() {
         return toString();
     }
 
     public void agregarServicio(Servicio s) {
-    	this.servicios.add(s);
+        this.servicios.add(s);
     }
-    
+
     public String getId_reserva() {
         return id_reserva;
     }
@@ -129,20 +127,19 @@ public class Reserva {
         this.salon = salon;
     }
 
-	@Override
+    @Override
     public String toString() {
-        return  "\nReserva: " + id_reserva + "\nCancelado: " 
-                + cancelado + "\nFecha: " + fecha.getDay() +"/" + fecha.getMonth() + "/" 
-                + fecha.getYear() + "\nMonto: " + monto + "\nReservado: " + reservado
+        return "\nReserva: " + id_reserva + "\nCancelado: " + cancelado + "\nFecha: " + fecha.getDay() + "/"
+                + fecha.getMonth() + "/" + fecha.getYear() + "\nMonto: " + monto + "\nReservado: " + reservado
                 + "\nSaldo: " + saldo + salon.toString();
     }
-    
+
     public Double calcularTotalReserva() {
-    	Double total = 0.0;
-    	for (Servicio s : servicios) {
+        Double total = 0.0;
+        for (Servicio s : servicios) {
             total += s.calcularTotalServicio();
-		}
-    	return total;
+        }
+        return total;
     }
 
 }

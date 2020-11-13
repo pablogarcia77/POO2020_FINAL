@@ -14,7 +14,6 @@ public class MusicaDAOImp implements IMusicaDAO {
     
     @Override
     public void save(Musica musica) {
-        // TODO Auto-generated method stub
         emf = Persistence.createEntityManagerFactory("eventos");
         manager = emf.createEntityManager();
         manager.getTransaction().begin();

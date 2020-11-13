@@ -14,7 +14,6 @@ public class ServicioDAOImp implements IServicioDAO {
     
     @Override
     public void save(Servicio servicio) {
-        // TODO Auto-generated method stub
         emf = Persistence.createEntityManagerFactory("eventos");
         manager = emf.createEntityManager();
         manager.getTransaction().begin();

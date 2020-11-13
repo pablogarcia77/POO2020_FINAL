@@ -1,6 +1,7 @@
 package eventos.aplicacion.modelo.dominio;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
@@ -9,16 +10,26 @@ import javax.persistence.Table;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name="service_type")
 @Table(name = "SERVICIOS")
 public abstract class Servicio {
 
   @Id
   @Column(name = "ser_id")
-  public String id_servicio;
+  private String id_servicio;
   @Column
-  public String descripcion;
+  private String descripcion;
   @Column
-  public double precio;
+  private double precio;
+
+  public Servicio() {
+  }
+
+  public Servicio(String id_servicio, String descripcion, double precio) {
+    this.id_servicio = id_servicio;
+    this.descripcion = descripcion;
+    this.precio = precio;
+  }
 
   public abstract double calcularTotalServicio();
 
@@ -37,6 +48,13 @@ public abstract class Servicio {
   public void setPrecio(double precio) {
     this.precio = precio;
   }
-  
+
+  public String getId_servicio() {
+    return id_servicio;
+  }
+
+  public void setId_servicio(String id_servicio) {
+    this.id_servicio = id_servicio;
+  }
+
 }
-  

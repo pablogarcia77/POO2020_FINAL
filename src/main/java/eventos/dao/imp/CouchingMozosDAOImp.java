@@ -14,7 +14,6 @@ public class CouchingMozosDAOImp implements ICouchingMozosDAO {
 
     @Override
     public void save(CouchingMozos couchingMozos) {
-        // TODO Auto-generated method stub
         emf = Persistence.createEntityManagerFactory("eventos");
         manager = emf.createEntityManager();
         manager.getTransaction().begin();

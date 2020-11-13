@@ -14,7 +14,6 @@ public class EventosReservadosDAOImp implements IEventosReservadosDAO {
     
     @Override
     public void save(EventosReservados eventosReservados) {
-        // TODO Auto-generated method stub
         emf = Persistence.createEntityManagerFactory("eventos");
         manager = emf.createEntityManager();
         manager.getTransaction().begin();

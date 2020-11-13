@@ -12,10 +12,10 @@ import eventos.aplicacion.modelo.dominio.Catering;
 class CateringTest {
 
 	Catering target;
-	
+
 	@BeforeEach
 	void setUp() throws Exception {
-		target = new Catering(3,500.0);
+		target = new Catering(3, 500.0);
 	}
 
 	@AfterEach
@@ -23,11 +23,11 @@ class CateringTest {
 		target = null;
 	}
 
-    @Test
-    @DisplayName("Calcular Total")
+	@Test
+	@DisplayName("Calcular Total")
 	void getTotal() {
 		double precio = target.calcularTotalServicio();
-		assertTrue(precio==1500.0);
+		assertTrue(precio == 1500.0);
 	}
 
 }

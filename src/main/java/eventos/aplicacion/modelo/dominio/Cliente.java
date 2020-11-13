@@ -16,6 +16,8 @@ import javax.persistence.Table;
 public class Cliente {
 
     @Id
+    // @GeneratedValue(strategy = GenerationType.IDENTITY)
+    // AUTOINCREMENT DataType Long or Integer
     @Column(name = "cli_id")
     private String id_cliente;
     @Column(name = "cli_nombre")
@@ -28,6 +30,7 @@ public class Cliente {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     public List<Reserva> reservas = new ArrayList<Reserva> ();
 
+    // off id_cliente Constructor
     public Cliente(String id_cliente, String nombre, String telefono, String email) {
         this.id_cliente = id_cliente;
         this.nombre = nombre;

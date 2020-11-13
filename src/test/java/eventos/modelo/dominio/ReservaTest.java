@@ -11,7 +11,6 @@ import eventos.aplicacion.modelo.dominio.Catering;
 import eventos.aplicacion.modelo.dominio.Reserva;
 import eventos.aplicacion.modelo.dominio.Servicio;
 
-
 class ReservaTest {
 
 	@BeforeEach
@@ -22,15 +21,14 @@ class ReservaTest {
 	void tearDown() throws Exception {
 	}
 
-    @Test
-    @DisplayName("Calcular Total de Reserva")
+	@Test
+	@DisplayName("Calcular Total de Reserva")
 	void getTotalReserva() {
-		Servicio servicio1 = new Catering(3,500.0);
+		Servicio servicio1 = new Catering(3, 500.0);
 		Reserva target = new Reserva();
 		target.agregarServicio(servicio1);
-		
+
 		assertTrue(target.calcularTotalReserva() == 1500.0);
 	}
 
 }
-

@@ -14,7 +14,6 @@ public class ReservaDAOImp implements IReservaDAO {
     
     @Override
     public void save(Reserva reserva) {
-        // TODO Auto-generated method stub
         emf = Persistence.createEntityManagerFactory("eventos");
         manager = emf.createEntityManager();
         manager.getTransaction().begin();

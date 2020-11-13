@@ -14,7 +14,6 @@ public class OrnamentacionDAOImp implements IOrnamentacionDAO {
     
     @Override
     public void save(Ornamentacion ornamentacion) {
-        // TODO Auto-generated method stub
         emf = Persistence.createEntityManagerFactory("eventos");
         manager = emf.createEntityManager();
         manager.getTransaction().begin();

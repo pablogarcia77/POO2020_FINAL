@@ -1,10 +1,12 @@
 package eventos.aplicacion.modelo.dominio;
 
 import javax.persistence.Column;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 import javax.persistence.Table;
 
-@MappedSuperclass
+@Entity
+@DiscriminatorValue("E")
 @Table(name = "ENTRETENIMIENTO_NINIOS")
 public class EntretenimientoNinios extends Servicio {
     
