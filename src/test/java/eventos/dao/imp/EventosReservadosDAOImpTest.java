@@ -25,7 +25,7 @@ public class EventosReservadosDAOImpTest {
         emf = Persistence.createEntityManagerFactory("eventos");
         manager = emf.createEntityManager();
         EventosReservados unEventoRes = new EventosReservados(
-                new Reserva("0001", new Date(0, 0, 0), 9999.99, true, 0.0, 17, 21, true), new Salon(), new Cliente());
+                new Reserva("0001", new Date(0, 0, 0), 9999.99, 17, 21, true), new Salon(), new Cliente());
         eventoResDAO.save(unEventoRes);
         // assertEquals("0001", manager.find(EventosReservados.class,
         // "0001").reservas.get(0).getId_reserva());

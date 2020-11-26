@@ -25,7 +25,7 @@ public class ReservaDAOImpTest {
         emf = Persistence.createEntityManagerFactory("eventos");
         manager = emf.createEntityManager();
 
-        Reserva unaReserva = new Reserva("0001", new Date(), 9999.99, true, 0.0, 17, 21, true);
+        Reserva unaReserva = new Reserva("0001", new Date(), 9999.99, 17, 21, true);
 
         reservaDAO.save(unaReserva);
 

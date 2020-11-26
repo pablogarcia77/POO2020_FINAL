@@ -34,4 +34,36 @@ public class Salon {
 
     public Salon() {
     }
+
+    public String getId_salon() {
+        return id_salon;
+    }
+
+    public void setId_salon(String id_salon) {
+        this.id_salon = id_salon;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public int getCapacidad() {
+        return capacidad;
+    }
+
+    public void setCapacidad(int capacidad) {
+        this.capacidad = capacidad;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
 }

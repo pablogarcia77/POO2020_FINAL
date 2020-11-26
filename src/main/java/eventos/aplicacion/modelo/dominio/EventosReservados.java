@@ -32,6 +32,7 @@ public class EventosReservados {
 
     public EventosReservados(Reserva reserva, Salon salon, Cliente cliente) {
         this.reserva = reserva;
+        this.reservas.add(reserva);
         this.salon = salon;
         this.cliente = cliente;
     }
@@ -48,7 +49,8 @@ public class EventosReservados {
     	Double total = 0.0;
     	for(Reserva reserva: reservas) {
     		total += reserva.calcularTotalReserva();
-    	}
+        }
+        total += salon.getPrecio();
     	return total;
     }
 

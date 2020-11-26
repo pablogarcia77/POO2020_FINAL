@@ -34,13 +34,11 @@ public class Reserva {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     public List<Salon> salon = new ArrayList<Salon>();
 
-    public Reserva(String id_reserva, Date fecha, double monto, boolean cancelado, double saldo, int hora_inicio,
+    public Reserva(String id_reserva, Date fecha, double monto, int hora_inicio,
             int hora_fin, boolean reservado) {
         this.id_reserva = id_reserva;
         this.fecha = fecha;
         this.monto = monto;
-        this.cancelado = cancelado;
-        this.saldo = saldo;
         this.reservado = reservado;
     }
 
@@ -140,6 +138,10 @@ public class Reserva {
             total += s.calcularTotalServicio();
         }
         return total;
+    }
+
+    public Boolean isCanceled(){
+        return (this.monto == this.calcularTotalReserva()) ? true : false;
     }
 
 }
