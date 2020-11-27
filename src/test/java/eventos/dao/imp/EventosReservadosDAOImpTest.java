@@ -1,5 +1,7 @@
 package eventos.dao.imp;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.sql.Date;
 
 import javax.persistence.EntityManager;
@@ -21,14 +23,17 @@ public class EventosReservadosDAOImpTest {
 
     @Test
     public void agregarEventoReservadoTest() {
+        Salon salon = new Salon("1", "Mitre 33", 50, 2500.0);
+        Cliente cliente = new Cliente("1", "Pedro", "3888450035", "pedro@gmail.com");
+        Reserva reserva = new Reserva("1", new Date(1, 1, 1), 9999.99, 17, 21, true);
         IEventosReservadosDAO eventoResDAO = new EventosReservadosDAOImp();
         emf = Persistence.createEntityManagerFactory("eventos");
         manager = emf.createEntityManager();
-        EventosReservados unEventoRes = new EventosReservados(
-                new Reserva("0001", new Date(0, 0, 0), 9999.99, 17, 21, true), new Salon(), new Cliente());
+        EventosReservados unEventoRes = new EventosReservados(reserva, salon, cliente);
+
         eventoResDAO.save(unEventoRes);
-        // assertEquals("0001", manager.find(EventosReservados.class,
-        // "0001").reservas.get(0).getId_reserva());
-        System.out.println(manager.find(EventosReservados.class, "0001").reservas.get(0).getId_reserva());
+
+        // assertTrue("0001" == unEventoRes.reservas.get(1).getId_reserva());
+
     }
 }

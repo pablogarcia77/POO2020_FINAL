@@ -14,16 +14,6 @@ import eventos.dao.IServicioDAO;
 
 public class ServicioDAOImpTest {
 
-    // private final class ServicioExtension extends Servicio {
-    //     private ServicioExtension(String id_servicio, String descripcion, double precio) {
-    //     }
-
-    //     @Override
-    //     public double calcularTotalServicio() {
-    //         return 0;
-    //     }
-    // }
-
     public static EntityManager manager;
     public static EntityManagerFactory emf;
 
@@ -35,12 +25,11 @@ public class ServicioDAOImpTest {
         emf = Persistence.createEntityManagerFactory("eventos");
         manager = emf.createEntityManager();
 
-        // Servicio unServicio = new ServicioExtension("0001", "Servicio Completo", 3500.00);
-        Servicio unServicio = new Catering("0001", "Servicio Completo", 3500.00,2,500.0);
+        Servicio unServicio = new Catering("1", "Servicio Completo", 5000.0, 2, 500.0);
 
         servicioDAO.save(unServicio);
 
-        assertEquals("0001", manager.find(Servicio.class, "0001").getId_servicio());
+        assertEquals("1", manager.find(Servicio.class, "1").getId_servicio());
 
     }
 

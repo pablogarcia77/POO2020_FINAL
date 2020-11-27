@@ -14,7 +14,7 @@ class SalonTest {
 
 	@BeforeEach
 	void setUp() throws Exception {
-		target = new Salon("1","Mitre 33",50,2500.0);
+		target = new Salon("1", "Mitre 33", 50, 2500.0);
 	}
 
 	@AfterEach
@@ -25,6 +25,11 @@ class SalonTest {
 	@Test
 	void test() {
 		assertNotNull(target);
+	}
+
+	@Test
+	void testComprobarSalon() {
+		assertEquals("1", target.id_salon);
 	}
 
 }

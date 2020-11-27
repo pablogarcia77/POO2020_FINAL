@@ -17,16 +17,16 @@ public class ClienteDAOImpTest {
     public static EntityManagerFactory emf;
 
     @Test
-    public void agregarClienteTest(){
+    public void agregarClienteTest() {
         IClienteDAO clienteDAO = new ClienteDAOImp();
 
         emf = Persistence.createEntityManagerFactory("eventos");
         manager = emf.createEntityManager();
 
-        Cliente unCliente = new Cliente("1","Fulanito","3888123456","fulano@gmail.com");
+        Cliente unCliente = new Cliente("1", "Fulanito", "3888123456", "fulano@gmail.com");
 
         clienteDAO.save(unCliente);
 
-        assertEquals("1", ((Cliente)manager.find(Cliente.class, "1")).getId_cliente());
+        assertEquals("1", ((Cliente) manager.find(Cliente.class, "1")).getId_cliente());
     }
 }

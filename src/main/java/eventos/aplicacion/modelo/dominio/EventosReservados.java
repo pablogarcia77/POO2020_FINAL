@@ -5,9 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -18,8 +20,11 @@ import javax.persistence.Table;
 @Table(name = "EVENTOS_RESERVADOS")
 public class EventosReservados {
 
+    @Id
+    @Column(name = "ev_res_id")
+    private String id_ev_res;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    public List<Reserva> reservas = new ArrayList<Reserva> ();
+    public List<Reserva> reservas = new ArrayList<Reserva>();
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "res_id")
     Reserva reserva;
@@ -36,45 +41,47 @@ public class EventosReservados {
         this.salon = salon;
         this.cliente = cliente;
     }
-     
+
     public EventosReservados() {
     }
 
     public void mostrarReservas() {
         for (Reserva reserva : reservas) {
-            System.out.println("***************\n" + cliente.obtenerDatos() + salon.toString() + reserva.mostrarServicios() + "\n***************");
+            System.out.println("***************\n" + cliente.obtenerDatos() + salon.toString()
+                    + reserva.mostrarServicios() + "\n***************");
         }
     }
+
     public double calcularTotal() {
-    	Double total = 0.0;
-    	for(Reserva reserva: reservas) {
-    		total += reserva.calcularTotalReserva();
+        Double total = 0.0;
+        for (Reserva reserva : reservas) {
+            total += reserva.calcularTotalReserva();
         }
         total += salon.getPrecio();
-    	return total;
+        return total;
     }
 
     public String estaCancelado() {
         String cancelado;
-        if (reserva.getSaldo()==0.0){
+        if (reserva.getSaldo() == 0.0) {
             cancelado = "El evento se encuentra pagado";
-        }else{
+        } else {
             cancelado = "El evento no se encuentra pagado";
         }
         return cancelado;
     }
 
     public String modificarFechaReserva(String idReserva, Date fecha) {
-    	for(Reserva reserva: reservas) {
-    		if(reserva.getId_reserva().equals(idReserva)) {
-    			reserva.setFecha(fecha);
-    			return "Se actualizó la fecha de la reserva";
-    		}
-    	}
-    	return "No se encontró reserva";
+        for (Reserva reserva : reservas) {
+            if (reserva.getId_reserva().equals(idReserva)) {
+                reserva.setFecha(fecha);
+                return "Se actualizó la fecha de la reserva";
+            }
+        }
+        return "No se encontró reserva";
     }
 
-    public void cancelarReserva(){
+    public void cancelarReserva() {
         reserva.setSaldo(0.0);
         reserva.setCancelado(true);
         reserva.setReservado(true);

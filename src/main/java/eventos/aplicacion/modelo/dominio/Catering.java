@@ -24,12 +24,12 @@ public class Catering extends Servicio {
     public Catering() {
     }
 
-    public Catering(String id_servicio, String descripcion, double precio,int cantidadComidas, double precioPorComida){
-        super(id_servicio,descripcion,precio);
+    public Catering(String id_servicio, String descripcion, double precio, int cantidadComidas,
+            double precioPorComida) {
+        super(id_servicio, descripcion, precio);
         this.cantidadComidas = cantidadComidas;
         this.precioPorComida = precioPorComida;
     }
-
 
     @Override
     public double calcularTotalServicio() {

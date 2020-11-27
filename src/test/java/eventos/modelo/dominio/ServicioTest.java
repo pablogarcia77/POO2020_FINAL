@@ -6,10 +6,17 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import eventos.aplicacion.modelo.dominio.CouchingMozos;
+import eventos.aplicacion.modelo.dominio.Servicio;
+
 class ServicioTest {
-	
+
+	Servicio target;
+	CouchingMozos couch;
+
 	@BeforeEach
 	void setUp() throws Exception {
+
 	}
 
 	@AfterEach

@@ -8,25 +8,22 @@ import javax.persistence.Persistence;
 
 import org.junit.jupiter.api.Test;
 
-import eventos.aplicacion.modelo.dominio.Catering;
-import eventos.dao.ICateringDAO;
+import eventos.aplicacion.modelo.dominio.CouchingMozos;
+import eventos.dao.ICouchingMozosDAO;
 
-public class CateringDAOImpTest {
+public class CouchingMozosDAOImpTest {
 
     public static EntityManager manager;
     public static EntityManagerFactory emf;
 
     @Test
-    public void agregarCateringTest() {
-        ICateringDAO cateringDAO = new CateringDAOImp();
-
+    public void agregarCouchingMozosTest() {
+        ICouchingMozosDAO mozosDAO = new CouchingMozosDAOImp();
         emf = Persistence.createEntityManagerFactory("eventos");
         manager = emf.createEntityManager();
-
-        Catering unCatering = new Catering(4, 500.0);
-
-        cateringDAO.save(unCatering);
-
-        assertEquals(2000.0, unCatering.calcularTotalServicio());
+        CouchingMozos unCouchingMozos = new CouchingMozos(2, 700);
+        mozosDAO.save(unCouchingMozos);
+        assertEquals(1400, unCouchingMozos.calcularTotalServicio());
     }
+
 }
