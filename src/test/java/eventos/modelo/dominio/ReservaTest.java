@@ -2,6 +2,8 @@ package eventos.modelo.dominio;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.sql.Date;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -31,4 +33,10 @@ class ReservaTest {
 		assertTrue(target.calcularTotalReserva() == 1500.0);
 	}
 
+	@Test
+	@DisplayName("Calcular el Saldo")
+	void getSaldo() {
+		Reserva reserva = new Reserva("2", new Date(2020, 12, 15), 10700.0, 3000.0, 17, 20, false);
+		assertEquals(7700.0, reserva.calcularSaldo());
+	}
 }

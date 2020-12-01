@@ -25,19 +25,19 @@ class EventosReservadosTest {
 	Reserva reserva;
 	Catering catering;
 	Musica musica;
-	
+
 	@BeforeEach
 	void setUp() throws Exception {
 		double totalReserva = 0.0;
-		cliente = new Cliente("12","Pablo","3888525708","pablo@gmail.com");
-		salon = new Salon("1","Mitre 33",50,2500.0);
+		cliente = new Cliente("12", "Pablo", "3888525708", "pablo@gmail.com");
+		salon = new Salon("1", "Mitre 33", 50, 2000.0);
 		catering = new Catering(3, 500.0);
-		musica = new Musica(true,500.0,1000.0);
+		musica = new Musica(true, 500.0, 1000.0);
 		totalReserva += salon.getPrecio() + catering.calcularTotalServicio() + musica.calcularTotalServicio();
-		reserva = new Reserva("2", new Date(2020,12,15), totalReserva, 17, 20, false);
+		reserva = new Reserva("2", new Date(2020, 12, 15), totalReserva, 3000.0, 17, 20, false);
 		reserva.agregarServicio(catering);
 		reserva.agregarServicio(musica);
-		target = new EventosReservados(reserva,salon,cliente);
+		target = new EventosReservados(reserva, salon, cliente);
 	}
 
 	@AfterEach
@@ -50,19 +50,17 @@ class EventosReservadosTest {
 		target = null;
 	}
 
-    @Test
-    @DisplayName("Mostrar Reserva")
+	@Test
+	@DisplayName("Mostrar Reserva")
 	void mostrarReserva() {
 		assertNotNull(target);
 	}
 
 	@Test
 	@DisplayName("CalcularTotal")
-	void calcularTotal(){
+	void calcularTotal() {
 		double total = target.calcularTotal();
-		assertEquals(5500.0, total,0);
+		assertEquals(5000.0, total, 0);
 	}
-
-
 
 }

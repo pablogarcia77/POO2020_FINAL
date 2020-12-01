@@ -23,6 +23,8 @@ public class Reserva {
     private Date fecha;
     @Column(name = "res_monto")
     private double monto;
+    @Column(name = "res_entrega")
+    private double entrega;
     @Column(name = "res_cancelado")
     private boolean cancelado;
     @Column(name = "res_saldo")
@@ -34,10 +36,12 @@ public class Reserva {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     public List<Salon> salon = new ArrayList<Salon>();
 
-    public Reserva(String id_reserva, Date fecha, double monto, int hora_inicio, int hora_fin, boolean reservado) {
+    public Reserva(String id_reserva, Date fecha, double monto, double entrega, int hora_inicio, int hora_fin,
+            boolean reservado) {
         this.id_reserva = id_reserva;
         this.fecha = fecha;
         this.monto = monto;
+        this.entrega = entrega;
         this.reservado = reservado;
     }
 
@@ -100,6 +104,14 @@ public class Reserva {
         this.saldo = saldo;
     }
 
+    public double getEntrega() {
+        return entrega;
+    }
+
+    public void setEntrega(double entrega) {
+        this.entrega = entrega;
+    }
+
     public boolean isReservado() {
         return reservado;
     }
@@ -141,6 +153,16 @@ public class Reserva {
 
     public Boolean isCanceled() {
         return (this.monto == this.calcularTotalReserva()) ? true : false;
+    }
+
+    public double calcularSaldo() {
+        double saldo = 0;
+        if (this.cancelado) {
+            saldo = 0;
+        } else {
+            saldo = monto - entrega;
+        }
+        return saldo;
     }
 
 }
